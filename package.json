@@ -4,10 +4,8 @@
 	"description": "",
 	"main": "js/app.js",
 	"scripts": {
-		"start": "tsc && node js/app.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start:watch": "nodemon js/app.js",
-		"compile-watch": "sudo yarn tsc --p tsconfig.json -w"
+		"build": "tsc",
+		"dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/app.ts"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,6 +13,7 @@
 	"devDependencies": {
 		"@types/express": "^4.17.2",
 		"nodemon": "^2.0.1",
+		"ts-node-dev": "^1.0.0-pre.44",
 		"tslint": "^5.20.1",
 		"typescript": "^3.7.2"
 	},
