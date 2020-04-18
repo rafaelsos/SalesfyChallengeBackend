@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import translateRouter from './translate.route';
 
 const routes = Router();
 
-routes.get('/', (req, res) => {
-  res.send('Hello Salesfy')
-});
+routes.use('/translate', translateRouter);
 
 export default routes;
