@@ -1,7 +1,5 @@
 import { Router } from 'express';
 
-const translateRouter = Router();
-
 const numberBase = [
   { number: 0, word: 'zero' },
   { number: 1, word: 'one' },
@@ -9,13 +7,15 @@ const numberBase = [
   { number: 3, word: 'thre' },
 ]
 
-translateRouter.get('/:id', (req, res) => {
+const translateRouter = Router();
+
+translateRouter.get('/', (req, res) => {
   const { id } = req.params;
   const number = Number(id);
 
   const numberTranslated = numberBase.find(item => item.number === number);
 
-  res.json(numberTranslated?.word);
+  return res.json(numberTranslated?.word);
 });
 
 export default translateRouter;

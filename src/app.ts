@@ -1,4 +1,4 @@
-import * as express from 'express'
+import express from 'express'
 import routes from './routes';
 
 const app = express()
@@ -13,3 +13,5 @@ app.listen(port, err => {
 	}
 	return console.log(`Salesfy Challenge Backend is listening on ${port}`)
 })
+
+export default app;

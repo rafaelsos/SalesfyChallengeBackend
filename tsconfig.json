@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-	"target": "es6",
-        "outDir": "js",
-        "noEmitOnError": true, 
-        "noImplicitAny": true,
-        "removeComments": true,
-        "module": "commonjs",
-        "strictNullChecks": true,
-		"inlineSourceMap": true,
-		"experimentalDecorators": true,
-        "sourceMap": false,
-		"skipLibCheck": true,
-		"types": [
-            "node"
-        ],
-        "typeRoots": [
-            "node_modules/@types"
-		],
-		"baseUrl": ".",
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "js",
+    "rootDir": "./src", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "strict": true, /* Enable all strict type-checking options. */
+    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "inlineSourceMap": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "baseUrl": ".",
   },
-  "lib": ["es2015"]
+  "lib": [
+    "es2015"
+  ]
 }
