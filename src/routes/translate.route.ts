@@ -1,11 +1,41 @@
 import { Router } from 'express';
 
-const numberBase = [
-  { number: 0, word: 'zero' },
-  { number: 1, word: 'one' },
-  { number: 2, word: 'two' },
-  { number: 3, word: 'thre' },
-]
+const baseNumbers = {
+  base: [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+    'ten',
+    'eleven',
+    'twelve',
+    'thirteen',
+    'fourteen',
+    'fifteen',
+    'sixteen',
+    'seventeen',
+    'eighteen',
+    'nineteen'
+  ],
+  dozens: [
+    'zero',
+    'ten',
+    'twenty',
+    'thirty',
+    'forty',
+    'fifty',
+    'sixty',
+    'seventy',
+    'eighty',
+    'ninety'
+  ]
+}
 
 const translateRouter = Router();
 
@@ -16,12 +46,36 @@ translateRouter.get('/translate/:id', (req, res) => {
   const typeNumber = Number.isInteger(number);
 
   if (!typeNumber) {
-    return res.status(400).json('Permitido somente numero inteiro');
+    return res.status(400).json({ error: 'Permitido somente numero inteiro' });
+  };
+
+  if (number < 0) {
+    return res.status(400).json({ error: 'Não é permitido traduzir um numero menor que zero' });
   }
 
-  const numberTranslated = numberBase.find(item => item.number === number);
+  if (number > 999) {
+    return res.status(400).json({ error: 'Não é permitido traduzir um numero maior que 999' });
+  }
 
-  return res.status(200).json(numberTranslated?.word);
+  let word = '';
+
+  if (number < 20) {
+    word = baseNumbers.base[number];
+  }
+
+  if (number < 100) {
+    const rest = number % 10;
+    const base = baseNumbers.base[number % 10];
+    const dozens = baseNumbers.dozens[Math.floor(number / 10)];
+
+    if (rest) {
+      word = `${dozens}-${base}`;
+    } else {
+      word = `${dozens}`;
+    }
+  }
+
+  return res.status(200).json(word);
 });
 
 export default translateRouter;
