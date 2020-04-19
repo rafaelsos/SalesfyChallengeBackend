@@ -24,8 +24,8 @@ class TranslateRepository {
       response = 'Não é permitido traduzir um numero menor que zero';
     }
 
-    if (number > 9999) {
-      response = 'Não é permitido traduzir um numero maior que 999';
+    if (number > 999999999) {
+      response = 'Não é permitido traduzir um numero maior que 999999999';
     }
 
     return response;
@@ -36,6 +36,7 @@ class TranslateRepository {
 
     if (number < 20) {
       word = baseNumbers.base[number];
+
     } else if (number < 100) {
       const rest = number % 10;
       const base = baseNumbers.base[number % 10];
@@ -46,6 +47,18 @@ class TranslateRepository {
       } else {
         word = `${dozens}`;
       }
+
+    } else if (number < 1000) {
+      const rest = number % 100;
+      const numHundred = this.translatedNumber(Math.floor(number / 100)) + ' hundred';
+
+      if (rest) {
+        const numTen = this.translatedNumber(rest);
+        word = numHundred + ' ' + numTen;
+      } else {
+        word = numHundred;
+      }
+
     }
 
     return word;

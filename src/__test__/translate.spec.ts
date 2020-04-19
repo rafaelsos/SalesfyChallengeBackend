@@ -46,12 +46,23 @@ describe('Minimum and maximum number validation', () => {
       });
   }).timeout(8000);
 
-  it('Does not allow translating more than nine hundred and ninety-nine', () => {
-    chai.request(app).get('/translate/1000')
+  it('Does not allow translating more than 999999999', (done) => {
+    const id = 1000000000;
+    chai.request(app)
+      .get(`/translate/${id}`)
+      .end((err, res) => {
+        chai.expect(res.status).to.eql(400);
+        done();
+      });
+  });
+  /*
+  it('Does not allow translating more than 999999999', () => {    
+    chai.request(app).get('/translate/1000000000')
       .then((res: any) => {
         chai.expect(res.status).to.eql(400);
       });
   }).timeout(8000);
+  */
 });
 
 describe('Testing number translation', () => {
@@ -70,4 +81,22 @@ describe('Testing number translation', () => {
         chai.expect(res.body).to.eql("fifty");
       });
   }).timeout(8000);
+
+  it('Translate number 123', () => {
+    chai.request(app).get('/translate/123')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("one hundred twenty-three");
+      });
+  }).timeout(8000);
+  /*
+
+  it('Translate number 999999999', () => {
+    chai.request(app).get('/translate/999999999')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine");
+      });
+  }).timeout(8000);
+  */
 });
