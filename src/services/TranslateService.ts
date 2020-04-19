@@ -21,11 +21,11 @@ class TranslateService {
       throw Error('Não é permitido traduzir um numero menor que zero');
     }
 
-    if (number > 999999999) {
-      throw Error('Não é permitido traduzir um numero maior que 999999999');
+    if (number > 999999999999) {
+      throw Error('Não é permitido traduzir um numero maior que 999999999999');
     }
 
-    const word = this.translateRepository.translatedNumber(number);
+    const word = this.translateRepository.translateNumber(number);
 
     if (!word) {
       throw Error('Não foi possível traduzir o numero informado...');

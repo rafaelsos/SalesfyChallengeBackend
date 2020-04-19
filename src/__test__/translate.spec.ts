@@ -46,8 +46,8 @@ describe('Minimum and maximum number validation', () => {
       });
   }).timeout(8000);
 
-  it('Does not allow translating more than 999999999', (done) => {
-    const id = 1000000000;
+  it('Does not allow translating more than 999999999999', (done) => {
+    const id = 1000000000000;
     chai.request(app)
       .get(`/translate/${id}`)
       .end((err, res) => {
@@ -119,6 +119,14 @@ describe('Testing number translation', () => {
       .then((res: any) => {
         chai.expect(res.status).to.eql(200);
         chai.expect(res.body).to.eql("nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine");
+      });
+  }).timeout(8000);
+
+  it('Translate number 999999999999', () => {
+    chai.request(app).get('/translate/999999999999')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("nine hundred ninety-nine billion nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine");
       });
   }).timeout(8000);
 

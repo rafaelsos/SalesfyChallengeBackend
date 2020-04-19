@@ -11,98 +11,46 @@ const baseNumbers = {
 }
 
 class TranslateRepository {
-  public translatedNumber(number: number) {
+  public translateNumber(number: number) {
     let word = '';
 
     if (number < 20) {
-      word = baseNumbers.base[number];
-
-    } else if (number < 100) {
-      const rest = number % 10;
-      const base = baseNumbers.base[number % 10];
-      const dozens = baseNumbers.dozens[Math.floor(number / 10)];
-
-      if (rest) {
-        word = `${dozens}-${base}`;
+      if (number > 0) {
+        return baseNumbers.base[number];
       } else {
-        word = `${dozens}`;
+        return word = '';
       }
+    }
+
+    if (number < 100) {
+      const ten = baseNumbers.dozens[Math.floor(number / 10)];
+      const unit = number % 10;
+
+      word = unit ? ten + '-' + baseNumbers.base[unit] : ten;
     } else if (number < 1000) {
-      const rest = number % 100;
-      const numHundred = this.translatedNumber(Math.floor(number / 100)) + ' hundred';
+      const hundred = baseNumbers.base[Math.floor(number / 100)] + ' hundred';
+      const restTen = number % 100;
+      const ten = this.translateNumber(restTen);
 
-      if (rest) {
-        const numTen = this.translatedNumber(rest);
-        word = numHundred + ' ' + numTen;
-      } else {
-        word = numHundred;
-      }
+      word = ten ? hundred + ' ' + ten : hundred;
     } else if (number < 1000000) {
-      const rest = number % 1000;
-      const numThousand = this.translatedNumber(Math.floor(number / 1000)) + ' thousand';
+      const thousand = this.translateNumber(Math.floor(number / 1000)) + ' thousand';
+      const restHundred = number % 1000;
+      const hundred = this.translateNumber(restHundred);
 
-      if (rest) {
-
-        if (Math.floor(rest / 100)) {
-          const numHundred = this.translatedNumber(Math.floor(rest / 100)) + ' hundred';
-          const restHundred = number % 100;
-
-          if (restHundred) {
-            const numTen = this.translatedNumber(restHundred);
-            word = numThousand + ' ' + numHundred + ' ' + numTen;
-          } else {
-            word = numThousand + ' ' + numHundred;
-          }
-        } else {
-          const restHundred = number % 100;
-
-          if (restHundred) {
-            const numTen = this.translatedNumber(restHundred);
-            word = numThousand + ' ' + numTen;
-          } else {
-            word = numThousand;
-          }
-        }
-      } else {
-        word = numThousand;
-      }
+      word = hundred ? thousand + ' ' + hundred : thousand;
     } else if (number < 1000000000) {
-      const rest = number % 1000000; //MILLION
-      const numMillion = this.translatedNumber(Math.floor(number / 1000000)) + ' million';
+      const million = this.translateNumber(Math.floor(number / 1000000)) + ' million';
+      const restThousand = number % 1000000;
+      const thousand = this.translateNumber(restThousand);
 
-      if (rest) {
-        if (Math.floor(rest / 1000)) {
-          const numThousand = this.translatedNumber(Math.floor(rest / 1000)) + ' thousand';
-          const restThousand = number % 1000;
+      word = thousand ? million + ' ' + thousand : million;
+    } else if (number < 1000000000000) {
+      const billion = this.translateNumber(Math.floor(number / 1000000000)) + ' billion';
+      const restMillion = number % 1000000000;
+      const million = this.translateNumber(restMillion);
 
-          if (restThousand) {
-            if (Math.floor(restThousand / 100)) {
-              const numHundred = this.translatedNumber(Math.floor(restThousand / 100)) + ' hundred';
-              const restHundred = number % 100;
-
-              if (restHundred) {
-                const numTen = this.translatedNumber(restHundred);
-                word = numMillion + ' ' + numThousand + ' ' + numHundred + ' ' + numTen;
-              } else {
-                word = numMillion + ' ' + numThousand + ' ' + numHundred;
-              }
-            } else {
-              const restHundred = number % 100;
-
-              if (restHundred) {
-                const numTen = this.translatedNumber(restHundred);
-                word = numMillion + ' ' + numThousand + ' ' + numTen;
-              } else {
-                word = numMillion + ' ' + numThousand;
-              }
-            }
-          } else {
-            word = numMillion + ' ' + numThousand;
-          }
-        }
-      } else {
-        word = numMillion;
-      }
+      word = million ? billion + ' ' + million : billion;
     }
 
     return word;

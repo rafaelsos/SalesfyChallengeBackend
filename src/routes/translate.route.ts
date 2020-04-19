@@ -10,9 +10,9 @@ translateRouter.get('/translate/:id', (req, res) => {
     const { id } = req.params;
     const number = Number(id);
 
-    const translateNumber = new TranslateService(translateRepository);
+    const validationsTranslateNumber = new TranslateService(translateRepository);
 
-    const word = translateNumber.execute({ number });
+    const word = validationsTranslateNumber.execute({ number });
 
     return res.status(200).json(word);
   } catch (err) {
