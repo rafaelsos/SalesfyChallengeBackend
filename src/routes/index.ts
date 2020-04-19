@@ -3,6 +3,6 @@ import translateRouter from './translate.route';
 
 const routes = Router();
 
-routes.use('/', translateRouter);
+routes.use(translateRouter);
 
 export default routes;
