@@ -55,14 +55,6 @@ describe('Minimum and maximum number validation', () => {
         done();
       });
   });
-  /*
-  it('Does not allow translating more than 999999999', () => {    
-    chai.request(app).get('/translate/1000000000')
-      .then((res: any) => {
-        chai.expect(res.status).to.eql(400);
-      });
-  }).timeout(8000);
-  */
 });
 
 describe('Testing number translation', () => {
@@ -89,7 +81,38 @@ describe('Testing number translation', () => {
         chai.expect(res.body).to.eql("one hundred twenty-three");
       });
   }).timeout(8000);
-  /*
+
+  it('Translate number 200', () => {
+    chai.request(app).get('/translate/200')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("two hundred");
+      });
+  }).timeout(8000);
+
+  it('Translate number 1011', () => {
+    chai.request(app).get('/translate/1011')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("one thousand eleven");
+      });
+  }).timeout(8000);
+
+  it('Translate number 125500', () => {
+    chai.request(app).get('/translate/125500')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("one hundred twenty-five thousand five hundred");
+      });
+  }).timeout(8000);
+
+  it('Translate number 12345678', () => {
+    chai.request(app).get('/translate/12345678')
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(200);
+        chai.expect(res.body).to.eql("twelve million three hundred forty-five thousand six hundred seventy-eight");
+      });
+  }).timeout(8000);
 
   it('Translate number 999999999', () => {
     chai.request(app).get('/translate/999999999')
@@ -98,5 +121,5 @@ describe('Testing number translation', () => {
         chai.expect(res.body).to.eql("nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine");
       });
   }).timeout(8000);
-  */
+
 });
