@@ -16,7 +16,7 @@ translateRouter.get('/translate/:id', (req, res) => {
 
     return res.status(200).json(word);
   } catch (err) {
-    return res.status(400).json({ error: err.message });
+    return res.status(400).json(err.message);
   }
 });
 

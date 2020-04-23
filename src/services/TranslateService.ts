@@ -14,15 +14,15 @@ class TranslateService {
   public execute({ number }: Request) {
     const typeNumber = Number.isInteger(number);
     if (!typeNumber) {
-      throw Error('Permitido somente numero inteiro');
+      throw Error('Somente números inteiros podem ser traduzidos');
     };
 
-    if (number < 0) {
-      throw Error('Não é permitido traduzir um numero menor que zero');
+    if (number < 1) {
+      throw Error('Não é permitido traduzir um número menor que 1');
     }
 
     if (number > 999999999999) {
-      throw Error('Não é permitido traduzir um numero maior que 999999999999');
+      throw Error('Não é permitido trduzir um número maior que 999999999999');
     }
 
     const word = this.translateRepository.translateNumber(number);
