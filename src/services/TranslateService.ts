@@ -18,7 +18,7 @@ class TranslateService {
     };
 
     if (number < 1) {
-      throw Error('It is not allowed to translate a number less than 1');
+      throw Error('It is not allowed to translate a number less than one');
     }
 
     if (number > 999999999999) {

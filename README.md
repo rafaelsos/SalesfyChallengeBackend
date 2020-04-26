@@ -1,5 +1,8 @@
 ### 📜 Sobre
 Este é um projeto para que o usuário informe números (em formato numérico), e esta será retorna o número por escrito em inglês. 
+
+Permitido traduzir números de 1 até 999999999999.
+
 A aplicação em **Node.js** (backend) é uma **API REST** escrita em **Node.JS** que serve dados tanto ao frontend quanto ao mobile. 
 
 Projeto desenvolvido utilizando TypeScript.
@@ -9,7 +12,7 @@ Regra de negócio desenvolvida com TDD utilizando mocha/chai.
 1. Ter o **NodeJs** e o **Yarn** instalado
 
 ### :rocket: Começando
-1. ``https://github.com/rafaelsos/SalesfyChallengeBackend.git``
+1. git clone ``https://github.com/rafaelsos/SalesfyChallengeBackend.git``
 2. ``cd SalesfyChallengeBackend``
 3. rodar o comando ``yarn`` para fazer a instalação do projeto
 

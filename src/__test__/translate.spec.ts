@@ -39,7 +39,7 @@ describe('Basic validations ', () => {
 });
 
 describe('Minimum and maximum number validation', () => {
-  it('Does not allow to translate a number less than zero', () => {
+  it('Does not allow to translate a number less than one', () => {
     chai.request(app).get('/translate/-1')
       .then((res: any) => {
         chai.expect(res.status).to.eql(400);
