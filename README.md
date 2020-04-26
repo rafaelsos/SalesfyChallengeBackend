@@ -1,14 +1,21 @@
-Este é o projeto de desafio Salesfy, etapa Backend.
+### 📜 Sobre
+Este é um projeto para que o usuário informe números (em formato numérico), e esta será retorna o número por escrito em inglês. 
+A aplicação em **Node.js** (backend) é uma **API REST** escrita em **Node.JS** que serve dados tanto ao frontend quanto ao mobile. 
 
-Para instalação, rodar o comando:
-$ npm install
+Projeto desenvolvido utilizando TypeScript.
+Regra de negócio desenvolvida com TDD utilizando mocha/chai.
 
-Para rodar corretamente com maior produtividade para desenvolvimento, rode em terminais diferentes os seguintes comandos:
+### 🔽 Requisitos
+1. Ter o **NodeJs** e o **Yarn** instalado
 
-$ sudo yarn compile-watch
--- Este comando é responsável por manter seu typescript sendo compilado a cada save. Você pode acompanhar neste terminal qualquer erro de escrita no seu programa.
+### :rocket: Começando
+1. ``https://github.com/rafaelsos/SalesfyChallengeBackend.git``
+2. ``cd SalesfyChallengeBackend``
+3. rodar o comando ``yarn`` para fazer a instalação do projeto
 
-$ sudo yarn nodemon
--- A cada compilação bem sucedida, o Backend lança novamente e automaticamente uma nova versão no ar. Mantendo a execução sempre com a versão mais atualizada do código.
+### :rocket: Iniciando com o backend
+1. ``yarn dev:server``
+2. Projeto está sendo startado na `port: 3333`.
 
-Caso esteja usando vsCode, é recomendado o uso da execução com debug, o que pode ser alcançado via arquivo launch.json. Em posse do arquivo, execute no vsCode o botão F5.
+### :rocket: Executando os testes
+1. ``yarn test``
